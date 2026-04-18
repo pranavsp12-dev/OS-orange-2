@@ -4,6 +4,7 @@
 // as an "object" named by its SHA-256 hash. Objects are stored under
 //c1
 // .pes/objects/XX/YYYYYY... where XX is the first two hex characters of the
+//C2
 // hash (directory sharding).
 //
 // PROVIDED functions: compute_hash, object_path, object_exists, hash_to_hex, hex_to_hash
