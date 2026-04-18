@@ -86,6 +86,7 @@ int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out
         free(buffer);
         return 0;
     }
+//chnage 1
 
     char path[512];
     object_path(id_out, path, sizeof(path));
