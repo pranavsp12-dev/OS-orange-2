@@ -35,7 +35,7 @@ int hex_to_hash(const char *hex, ObjectID *id_out) {
     }
     return 0;
 }
-
+// UPDATE
 void compute_hash(const void *data, size_t len, ObjectID *id_out) {
     unsigned int hash_len;
     EVP_MD_CTX *ctx = EVP_MD_CTX_new();
