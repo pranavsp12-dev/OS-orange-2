@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include<math.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <openssl/evp.h>
