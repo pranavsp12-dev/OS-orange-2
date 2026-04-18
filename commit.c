@@ -132,7 +132,7 @@ int head_read(ObjectID *id_out) {
     char line[512];
     if (!fgets(line, sizeof(line), f)) { fclose(f); return -1; }
     fclose(f);
-    line[strcspn(line, "\r\n")] = '\0'; // strip newline
+    line[strcspn(line, "\r\n")] = '\0';
 
     char ref_path[512];
     if (strncmp(line, "ref: ", 5) == 0) {
@@ -194,8 +194,42 @@ int head_update(const ObjectID *new_commit) {
 //
 // Returns 0 on success, -1 on error.
 int commit_create(const char *message, ObjectID *commit_id_out) {
-    // TODO: Implement commit creation
-    // (See Lab Appendix for logical steps)
-    (void)message; (void)commit_id_out;
-    return -1;
+    ObjectID tree_id;
+    if (tree_from_index(&tree_id) != 0) return -1;
+
+    Commit commit;
+    memset(&commit, 0, sizeof(commit));
+
+    commit.tree = tree_id;
+
+    ObjectID parent_id;
+    if (head_read(&parent_id) == 0) {
+        commit.parent = parent_id;
+        commit.has_parent = 1;
+    } else {
+        commit.has_parent = 0;
+    }
+
+    const char *author = pes_author();
+    snprintf(commit.author, sizeof(commit.author), "%s", author);
+
+    commit.timestamp = (uint64_t)time(NULL);
+
+    snprintf(commit.message, sizeof(commit.message), "%s", message);
+
+    void *data;
+    size_t len;
+
+    if (commit_serialize(&commit, &data, &len) != 0) return -1;
+
+    if (object_write(OBJ_COMMIT, data, len, commit_id_out) != 0) {
+        free(data);
+        return -1;
+    }
+
+    free(data);
+
+    if (head_update(commit_id_out) != 0) return -1;
+
+    return 0;
 }
