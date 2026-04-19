@@ -191,7 +191,7 @@ int head_update(const ObjectID *new_commit) {
 //   - commit_serialize  : converts the filled Commit struct to a text buffer
 //   - object_write      : saves the serialized text as OBJ_COMMIT
 //   - head_update       : moves the branch pointer to your new commit
-//
+//C
 // Returns 0 on success, -1 on error.
 int commit_create(const char *message, ObjectID *commit_id_out) {
     ObjectID tree_id;
