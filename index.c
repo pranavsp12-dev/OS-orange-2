@@ -22,6 +22,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include<math.h>
 #include <dirent.h>
 
 // ─── PROVIDED ────────────────────────────────────────────────────────────────
