@@ -2,7 +2,7 @@
 //
 // Text format of .pes/index (one entry per line, sorted by path):
 //
-//   <mode-octal> <64-char-hex-hash> <mtime-seconds> <size> <path>
+//   <mode-octalc> <64-char-hex-hash> <mtime-seconds> <size> <path>
 //
 // Example:
 //   100644 a1b2c3d4e5f6...  1699900000 42 README.md
