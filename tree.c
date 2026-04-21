@@ -18,7 +18,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-// ─── Mode Constants ─────────────────────────────────────────────────────────
+// ─── Mode constants ─────────────────────────────────────────────────────────
 
 #define MODE_FILE      0100644
 #define MODE_EXEC      0100755
